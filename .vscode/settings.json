@@ -1,6 +1,12 @@
 {
     "files.associations": {
-        "*.tcc": "cpp",
-        "fstream": "cpp"
-    }
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "sstream": "cpp",
+        "ISBN.C": "cpp",
+        "cstring": "cpp",
+        "stdio.h": "c",
+        "ostream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
