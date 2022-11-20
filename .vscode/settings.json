@@ -6,7 +6,8 @@
         "ISBN.C": "cpp",
         "cstring": "cpp",
         "stdio.h": "c",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

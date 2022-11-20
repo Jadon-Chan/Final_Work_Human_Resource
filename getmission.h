@@ -4,10 +4,10 @@
 #include <iostream>
 using namespace std;
 
-bool getmission(int x,int &n1,int orig[],int &n2,int targ[101],int &spac,int &useable,string instr[101]){
-    string task[]={"","D:/vscodecenter/robot/mission1.txt",
-    "D:/vscodecenter/robot/mission2.txt",
-    "D:/vscodecenter/robot/mission3.txt"};
+bool getmission(int x){
+    string task[]={"","mission1.txt",
+    "mission2.txt",
+    "mission3.txt"};
     string s=task[x];
     ifstream fin;fin.open(s);
     if(!fin){cout<<"fail to open"<<s<<endl;system("pause");return 0;}

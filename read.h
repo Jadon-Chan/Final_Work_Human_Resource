@@ -1,20 +1,7 @@
-#include <string>
+#include "variable.h"
 #include <iostream>
-#include <cstdio>
-#include <fstream>
-#include <cstring>
-#include <cctype>
-using namespace std;
+#include <string>
 
-int search(string sets[], int n, string a)
-{
-    for (int i = 0; i < n; i++)
-    {
-        if (sets[i] == a)
-            return i;
-    }
-    return -1;
-}
 bool test(char *str)
 {
     if (strlen(str) > 2)
@@ -36,12 +23,10 @@ void getdeci(int *a)
     }
     sscanf(line, "%d", a);
 }
-string sets[] = {"inbox", "outbox", "add", "sub", "copyto", "copyfrom", "jump", "jumpifzero"};
-string neat[] = {"inbox", "outbox"};
+
 void read(void)
 {
     string way;
-    int lines;
     ofstream keyboard("Instructions");
     ifstream file("Instructions");
     cout << "Choose the way you want to input?\n"
@@ -59,30 +44,12 @@ void read(void)
              << "(You won't enter a non-integer to embarass me, right?)" << endl
              << "(And you can make 99 pieces at most)" << endl;
         getdeci(&lines);
-        cout << "Okay then. Tell the robot what to do now:\n";
+        string line;
         for (int i = 0; i < lines; i++)
         {
-            string a;
-            int num;
-            cin >> a;
-            getchar();
-            while (search(sets, 8, a) == -1)
-            {
-                cout << "Robo can't understand what you are saying.Please re-enter.\n";
-                cin >> a;
-            }
-            if (search(neat, 2, a) == -1)
-            {
-                cout << "Well, then what about the operating number of this?" << endl
-                     << "No larger than 99" << endl;
-                getdeci(&num);
-                char snum[3];
-                sprintf(snum, " %d", num);
-                a += snum;
-            }
-            keyboard << a << endl;
-            if (i != lines-1)
-                cout << "Great. Next line." << endl;
+            cin.getline(line);
+            keyboard << line;
         }
     }
+    
 }
