@@ -1,7 +1,6 @@
 #pragma once
 
-#include <string>
-#include <iostream>
+#include "variable.h"
 using namespace std;
 
 bool getmission(int x){
