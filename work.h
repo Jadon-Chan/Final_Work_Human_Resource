@@ -22,8 +22,10 @@ void work(){
     for(int i=0;i<spac;i++)empt[i]=A;
 
     for(int i=1;i<=lines;i++){
-        cin>>instruction>>num;
         if(check(i)==0){cout<<"ERROR on instruction"<<i<<endl;return ;}
+        stringstream str(users[i]);
+        str >> instruction;
+        str >> num;
         if(instruction=="inbox"){
             if(len1==0)return ;
             nownum=orig[1];
