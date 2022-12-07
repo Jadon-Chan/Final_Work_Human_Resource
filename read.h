@@ -54,64 +54,82 @@ void read(void)
         break;
     }
 }
-
-bool check(int i)
+bool isint(char *oprand)
 {
-    if (!binary_search(instr, instr+sizeof(instr), users[i]))
-        return 0;
-    string op;
-    char operand[100];
-    stringstream s(usres[i]);
-    s >> op;
-    switch (op)
+    for (int i = 0; i < strlen(operand); i++)
     {
-        case "inbox":
-        if (s.tellp()!=streampos(0))
-            return 0;
-        case "outbox":
-        if (s.tellp()!=streampos(0))
-            return 0;
-        //how to judge now nownum
-        case "add":
-        case "sub":
-        //how to judge field x
-        if (s.tellp()==streampos(0))
-            return 0;
-        s >> operand;
-        for (int i = 0; i < strlen(operand); i++)
-        {
-            if (operand[i] < '0'|| operand[i] > '9')
-                return 0;
-        }
-        case "copyto":
-        if (s.tellp()==streampos(0))
-            return 0;
-        s >> operand;
-        for (int i = 0; i < strlen(operand); i++)
-        {
-            if (operand[i] < '0'|| operand[i] > '9')
-                return 0;
-        }
-        case "copyfrom":
-        if (s.tellp()==streampos(0))
-            return 0;
-        s >> operand;
-        for (int i = 0; i < strlen(operand); i++)
-        {
-            if (operand[i] < '0'|| operand[i] > '9')
-                return 0;
-        }
-        case "jump":
-        case "jumpifzero":
-        if (s.tellp()==streampos(0))
-            return 0;
-        s >> operand;
-        for (int i = 0; i < strlen(operand); i++)
-        {
-            if (operand[i] < '0'|| operand[i] > '9')
-                return 0;
-        }
-        if (users[operand]=="")
+        if (operand[i] < '0' || operand[i] > '9')
             return 0;
     }
+    return 1;
+}
+bool check(int i)
+{
+    if (!binary_search(instr, instr + sizeof(instr), users[i]))
+        return 0;
+    char op[15];
+    char operand[100];
+    stringstream s(users[i]);
+    s >> op >> operand;
+    string temp = convertToString(op);
+    int situ;
+    string sets[] = {"inbox", "outbox", "add", "sub", "copyto", "copyfrom", "jump", "jumpifzero"};
+    for (int i = 0; i < 8; i++)
+    {
+        if (temp == sets[i])
+        {
+            situ = i;
+            break;
+        }
+    }
+    switch (situ)
+    {
+    case 0:
+        if (s.tellp() == 0)
+            return 0;
+    case 1:
+        if (s.tellp() == 0)
+            return 0;
+        // how to judge now nownum
+        if (nownum == A)
+            return 0;
+    case 2:
+    case 3:
+        // how to judge field x
+        if (s.tellp() != 0)
+            return 0;
+        if (!isint(operand))
+            return 0;
+        string temp = convertToString(operand);
+        if (stoi(temp) > spac || empt[stoi(temp)] == A)
+            return 0;
+    case 4:
+        if (s.tellp() != 0)
+            return 0;
+        if (!isint(operand))
+            return 0;
+        string temp = convertToString(operand);
+        if (stoi(temp) > spac)
+            return 0;
+        if (nownum == A)
+            return 0;
+    case 5:
+        if (s.tellp() != 0)
+            return 0;
+        if (!isint(operand))
+            return 0;
+        string temp = convertToString(operand);
+        if (stoi(temp) > spac || empt[stoi(temp)] == A)
+            return 0;
+    case 6:
+    case 7:
+        if (s.tellp() != 0)
+            return 0;
+        string temp = convertTostring(operand);
+        if (users[stoi(temp)] == "")
+            return 0;
+        if (situ == 7 && nownum == A)
+            return 0;
+    }
+    return 1;
 }

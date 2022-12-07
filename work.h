@@ -22,7 +22,7 @@ void work(){
     for(int i=0;i<spac;i++)empt[i]=A;
 
     for(int i=1;i<=lines;i++){
-        if(check(i)==0){cout<<"ERROR on instruction"<<i<<endl;return ;}
+        if(check(i)==0){cout<<"ERROR on instruction "<<i<<endl;return ;}
         stringstream str(users[i]);
         str >> instruction;
         str >> num;
