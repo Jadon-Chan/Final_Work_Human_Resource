@@ -4,9 +4,7 @@
 using namespace std;
 
 bool getmission(int x){
-    string task[]={"","mission1.txt",
-    "mission2.txt",
-    "mission3.txt"};
+
     string s=task[x];
     ifstream fin;fin.open(s);
     if(!fin){cout<<"fail to open"<<s<<endl;system("pause");return 0;}

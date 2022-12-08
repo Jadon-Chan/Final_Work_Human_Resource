@@ -1,15 +1,16 @@
-#include <sstream>
-#include <algorithm>
-#include <fstream>
-#include <string>
-#include <iostream>
+
+#pragma once
+
 #include "variable.h"
+
 
 void keyboard(void)
 {
     cout << "How many lines you'd like to input?" << endl;
     cin >> lines;
-    for (int i = 0; i < lines; i++)
+
+    for (int i = 1; i <= lines; i++)
+
     {
         cin >> users[i];
     }
@@ -23,9 +24,11 @@ void file(void)
     cout << "Enter the path of your instruction file:" << endl;
     string path;
     cin >> path;
-    ifstream source.open(path);
+
+    ifstream source(path);
     source >> lines;
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= lines; i++)
+
     {
         source >> users[i];
     }
@@ -54,7 +57,9 @@ void read(void)
         break;
     }
 }
-bool isint(char *oprand)
+
+bool isint(char *operand)
+
 {
     for (int i = 0; i < strlen(operand); i++)
     {
@@ -65,13 +70,13 @@ bool isint(char *oprand)
 }
 bool check(int i)
 {
-    if (!binary_search(instr, instr + sizeof(instr), users[i]))
-        return 0;
+
     char op[15];
     char operand[100];
     stringstream s(users[i]);
-    s >> op >> operand;
-    string temp = convertToString(op);
+    s >> op >> operand;;
+    string temp = op;
+
     int situ;
     string sets[] = {"inbox", "outbox", "add", "sub", "copyto", "copyfrom", "jump", "jumpifzero"};
     for (int i = 0; i < 8; i++)
@@ -81,55 +86,76 @@ bool check(int i)
             situ = i;
             break;
         }
+
     }
-    switch (situ)
+    bool popo=0;
+    for (int i = 1; i<= useable ; i++)
     {
-    case 0:
+        if(sets[situ]==instr[i])
+            popo=1;
+    }
+    if(popo==0)return 0;
+    switch(situ)
+    {
+    case 0:{
         if (s.tellp() == 0)
             return 0;
-    case 1:
+        break;
+            }
+    case 1:{
         if (s.tellp() == 0)
             return 0;
         // how to judge now nownum
         if (nownum == A)
             return 0;
+        break;
+            }
     case 2:
-    case 3:
+    case 3:{
         // how to judge field x
         if (s.tellp() != 0)
             return 0;
         if (!isint(operand))
             return 0;
-        string temp = convertToString(operand);
+        string temp = operand;
         if (stoi(temp) > spac || empt[stoi(temp)] == A)
             return 0;
-    case 4:
+        break;
+            }
+    case 4:{
         if (s.tellp() != 0)
             return 0;
         if (!isint(operand))
             return 0;
-        string temp = convertToString(operand);
+        string temp = operand;
         if (stoi(temp) > spac)
             return 0;
         if (nownum == A)
             return 0;
-    case 5:
+        break;
+            }
+    case 5:{
         if (s.tellp() != 0)
             return 0;
         if (!isint(operand))
             return 0;
-        string temp = convertToString(operand);
+        string temp = operand;
         if (stoi(temp) > spac || empt[stoi(temp)] == A)
             return 0;
+        break;
+            }
     case 6:
-    case 7:
+    case 7:{
         if (s.tellp() != 0)
             return 0;
-        string temp = convertTostring(operand);
+        string temp = operand;
         if (users[stoi(temp)] == "")
             return 0;
         if (situ == 7 && nownum == A)
             return 0;
+        break;
+            }
+    default:{return 0;}
     }
     return 1;
 }

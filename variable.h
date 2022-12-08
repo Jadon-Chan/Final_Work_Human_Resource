@@ -1,9 +1,12 @@
+
 #pragma once
 
 #include <iostream>
 #include <cstring>
 #include <string>
 #include <cstdio>
+#include <sstream>
+#include <algorithm>
 #include <fstream>
 #include <stdlib.h>
 using namespace std;
@@ -19,3 +22,6 @@ extern int nownum,len1,len2;
 extern string instruction;
 extern int num;
 extern int A;
+extern string task[101];
+extern int coun;
+

@@ -3,6 +3,9 @@
 
 #include "print.h"
 #include "variable.h"
+
+#include "read.h"
+
 using namespace std;
 
 int standhere;
@@ -31,7 +34,10 @@ void work(){
             nownum=orig[1];
             for(int j=1;j<len1;j++)orig[j]=orig[j+1];
             len1--;
-            robotchange(standhere,0);standhere=0;
+
+            if(spac==0){robotchange(standhere,-1);standhere=-1;}
+            else{robotchange(standhere,0);standhere=0;}
+
             mapp[2][17+standhere*5]=mapp[2][7];
             mapp[2][18+standhere*5]=mapp[2][8];
             mapp[2][19+standhere*5]=mapp[2][9];
@@ -49,7 +55,10 @@ void work(){
             for(int j=len2;j>1;j--)subs[j]=subs[j-1];
             subs[1]=nownum;
             nownum=A;
-            robotchange(standhere,spac-1);standhere=spac-1;
+
+            if(spac==0){robotchange(standhere,1);standhere=1;}
+            else{robotchange(standhere,spac-1);standhere=spac-1;}
+
             for(int j=len2;j>=1;j--)
                 for(int op=0;op<3;op++)
                     mapp[j*3+2][max(spac,1)*5+30-8+op]=mapp[j*3-1][max(spac,1)*5+30-8+op];
@@ -63,7 +72,7 @@ void work(){
             continue;
         }
         if(instruction=="add"){
-            cout<<nownum<<' '<<empt[num]<<endl;
+
             nownum+=empt[num];
             int jkl=nownum;
             robotchange(standhere,num);standhere=num;
@@ -114,4 +123,27 @@ void work(){
         }
     }
     return ;
+
+}
+void sus(int p){
+    bool okk=1;
+    if(len2==n2){
+        for(int i=1;i<=len2;i++)
+            if(subs[i]!=targ[len2+1-i])
+                okk=0;
+    }
+    else okk=0;
+    if(okk==0){
+        cout<<"Fail"<<endl;
+        cout<<"Oh,GOD! I'm sorry you didn't pass this level"<<endl;
+    }
+    else{
+        cout<<"Success"<<endl;
+        cout<<"Congratulations, you have passed this level"<<endl;
+        ofstream fout(task[0]);
+        for(int i=1;i<=p;i++)fout<<"yes"<<endl;
+        for(int i=p+1;i<=4;i++)fout<<"no"<<endl;
+        fout.close();
+    }
+
 }
