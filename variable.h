@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <iostream>
@@ -23,3 +24,4 @@ extern int num;
 extern int A;
 extern string task[101];
 extern int coun;
+

@@ -1,3 +1,4 @@
+
 #include "getmission.h"
 #include "print.h"
 #include "work.h"
@@ -38,4 +39,5 @@ int main(void)
         cnt++;
     }
     return 0;
+
 }

@@ -69,8 +69,10 @@ void print(int instrnow){
         if(i==1)cout<<"| ===== CODE ===="<<endl;
         else{
             if(i<=lines+1){
+
                 if(i==instrnow+1)cout<<"| > "<<i-1<<' '<<users[i-1]<<endl;
                 else cout<<"|   "<<i-1<<' '<<users[i-1]<<endl;
+
             }
             else cout<<'|'<<endl;
         }

@@ -3,7 +3,9 @@
 
 #include "print.h"
 #include "variable.h"
+
 #include "read.h"
+
 using namespace std;
 
 int standhere;
@@ -32,8 +34,10 @@ void work(){
             nownum=orig[1];
             for(int j=1;j<len1;j++)orig[j]=orig[j+1];
             len1--;
+
             if(spac==0){robotchange(standhere,-1);standhere=-1;}
             else{robotchange(standhere,0);standhere=0;}
+
             mapp[2][17+standhere*5]=mapp[2][7];
             mapp[2][18+standhere*5]=mapp[2][8];
             mapp[2][19+standhere*5]=mapp[2][9];
@@ -51,8 +55,10 @@ void work(){
             for(int j=len2;j>1;j--)subs[j]=subs[j-1];
             subs[1]=nownum;
             nownum=A;
+
             if(spac==0){robotchange(standhere,1);standhere=1;}
             else{robotchange(standhere,spac-1);standhere=spac-1;}
+
             for(int j=len2;j>=1;j--)
                 for(int op=0;op<3;op++)
                     mapp[j*3+2][max(spac,1)*5+30-8+op]=mapp[j*3-1][max(spac,1)*5+30-8+op];
@@ -66,6 +72,7 @@ void work(){
             continue;
         }
         if(instruction=="add"){
+
             nownum+=empt[num];
             int jkl=nownum;
             robotchange(standhere,num);standhere=num;
@@ -116,6 +123,7 @@ void work(){
         }
     }
     return ;
+
 }
 void sus(int p){
     bool okk=1;
@@ -137,4 +145,5 @@ void sus(int p){
         for(int i=p+1;i<=4;i++)fout<<"no"<<endl;
         fout.close();
     }
+
 }

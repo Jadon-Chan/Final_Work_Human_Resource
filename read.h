@@ -1,12 +1,16 @@
+
 #pragma once
 
 #include "variable.h"
+
 
 void keyboard(void)
 {
     cout << "How many lines you'd like to input?" << endl;
     cin >> lines;
+
     for (int i = 1; i <= lines; i++)
+
     {
         cin >> users[i];
     }
@@ -20,9 +24,11 @@ void file(void)
     cout << "Enter the path of your instruction file:" << endl;
     string path;
     cin >> path;
+
     ifstream source(path);
     source >> lines;
     for (int i = 1; i <= lines; i++)
+
     {
         source >> users[i];
     }
@@ -51,7 +57,9 @@ void read(void)
         break;
     }
 }
+
 bool isint(char *operand)
+
 {
     for (int i = 0; i < strlen(operand); i++)
     {
@@ -62,11 +70,13 @@ bool isint(char *operand)
 }
 bool check(int i)
 {
+
     char op[15];
     char operand[100];
     stringstream s(users[i]);
     s >> op >> operand;;
     string temp = op;
+
     int situ;
     string sets[] = {"inbox", "outbox", "add", "sub", "copyto", "copyfrom", "jump", "jumpifzero"};
     for (int i = 0; i < 8; i++)
@@ -76,6 +86,7 @@ bool check(int i)
             situ = i;
             break;
         }
+
     }
     bool popo=0;
     for (int i = 1; i<= useable ; i++)

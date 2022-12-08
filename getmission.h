@@ -4,6 +4,7 @@
 using namespace std;
 
 bool getmission(int x){
+
     string s=task[x];
     ifstream fin;fin.open(s);
     if(!fin){cout<<"fail to open"<<s<<endl;system("pause");return 0;}
