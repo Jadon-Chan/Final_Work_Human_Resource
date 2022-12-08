@@ -1,10 +1,10 @@
-
 #include "getmission.h"
 #include "print.h"
 #include "work.h"
 #include "Start.h"
 #include "read.h"
 #include "variable.h"
+#include <iostream>
 using namespace std;
 
 int n1,n2,lines,spac,useable;
@@ -17,11 +17,11 @@ string instruction;int num;
 int A,p;
 int coun;
 string task[]={
-    "D:\\vscodecenter\\robot\\Pass_Situation.txt",
-    "D:\\vscodecenter\\robot\\mission1.txt",
-    "D:\\vscodecenter\\robot\\mission2.txt",
-    "D:\\vscodecenter\\robot\\mission3.txt"};
-
+    "D:\\Users\\JadonChan\\AppData\\Local\\Programs\\Final2\\mission1.txt",
+    "D:\\Users\\JadonChan\\AppData\\Local\\Programs\\Final2\\mission2.txt",
+    "D:\\Users\\JadonChan\\AppData\\Local\\Programs\\Final2\\mission3.txt",
+    "D:\\Users\\JadonChan\\AppData\\Local\\Programs\\Final2\\mission4.txt",
+};
 int main(void)
 {
     int cnt=0;

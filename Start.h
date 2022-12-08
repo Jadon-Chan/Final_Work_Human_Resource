@@ -8,7 +8,7 @@ int start(int cnt)
     A=1000;
     if(cnt==0)
         cout << "Hi, there!\nWelcome to the human resource game!\n\n";
-    ifstream pass(task[0]);
+    ifstream pass("Pass_Situation.txt");
     string test;
     coun = 0;
     while(!pass.eof())

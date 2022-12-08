@@ -2,17 +2,19 @@
 #pragma once
 
 #include "variable.h"
-
+using namespace std;
 
 void keyboard(void)
 {
     cout << "How many lines you'd like to input?" << endl;
     cin >> lines;
-
+    char ch;
+    while ((ch = getchar()) != '\n')
+        continue;
     for (int i = 1; i <= lines; i++)
 
     {
-        cin >> users[i];
+        getline(cin, users[i]);
     }
 }
 

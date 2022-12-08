@@ -5,7 +5,7 @@ using namespace std;
 
 bool getmission(int x){
 
-    string s=task[x];
+    string s=task[x-1];
     ifstream fin;fin.open(s);
     if(!fin){cout<<"fail to open"<<s<<endl;system("pause");return 0;}
     fin>>n1;for(int i=1;i<=n1;i++)fin>>orig[i];
