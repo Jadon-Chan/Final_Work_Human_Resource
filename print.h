@@ -1,10 +1,11 @@
 #pragma once
 
-#include <iostream>
+
+#include "variable.h"
 using namespace std;
 
 int di[]={0,2,2,0};int dj[]={0,0,4,4};
-void makemap(char mapp[101][101],int n1,int n2,int orig[101],int targ[101],int spac){
+void makemap(){
     int N=n1*3,NN=n2*3,M=max(spac,1)*5+30;
     for(int i=1;i<=max(14,max(N,NN));i++)
         for(int j=1;j<=M;j++)
@@ -51,10 +52,9 @@ void makemap(char mapp[101][101],int n1,int n2,int orig[101],int targ[101],int s
         else mapp[i][8]=char(jkl+'0');
     }
     for(int i=2;i<=3*n2-1;i+=3){
-        int jkl=targ[(i+1)/3];
-        if(jkl<0){mapp[i][M-8]='-';jkl=-jkl;}
-        if(jkl>=10)mapp[i][M-7]=char((jkl/10)+'0'),mapp[i][M-6]=char((jkl%10)+'0');
-        else mapp[i][M-7]=char(jkl+'0');
+        mapp[i][M-8]=' ';
+        mapp[i][M-7]='X';
+        mapp[i][M-6]=' ';
     }
     mapp[2][18]='X';
     for(int j=18;j<=5*spac+13;j+=5)
@@ -62,16 +62,18 @@ void makemap(char mapp[101][101],int n1,int n2,int orig[101],int targ[101],int s
     return ;
 }
 
-void print(int n,int spac,char mapp[101][101],int instrnum,string instr[101]){
-    int N=max(14,n*3),M=max(spac,1)*5+30;
+void print(int instrnow){
+    int N=max(14,max(n1,n2)*3),M=max(spac,1)*5+30;
     for(int i=1;i<=N;i++){
         for(int j=1;j<=M;j++)putchar(mapp[i][j]);
         if(i==1)cout<<"| ===== CODE ===="<<endl;
         else{
-            if(i<=instrnum+1)
-                cout<<"|   "<<i-2<<' '<<instr[i-2]<<endl;
+            if(i<=lines+1){
+                if(i==instrnow+1)cout<<"| > "<<i-1<<' '<<users[i-1]<<endl;
+                else cout<<"|   "<<i-1<<' '<<users[i-1]<<endl;
+            }
             else cout<<'|'<<endl;
         }
     }
     return ;
-}//小箭头
+}
