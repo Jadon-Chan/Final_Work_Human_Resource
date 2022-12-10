@@ -19,7 +19,7 @@ bool getmission(int x){
     cout<<"The requirement is";
     while(!fin.eof()){
         fin>>hin;
-        cout<<hin;
+        cout<<hin<<' ';
     }
     cout<<endl;
     fin.close();

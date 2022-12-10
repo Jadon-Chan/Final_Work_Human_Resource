@@ -66,19 +66,19 @@ void print(int instrnow){
     int N=max(14,max(n1,n2)*3),M=max(spac,1)*5+30;
     for(int i=1;i<=N;i++){
         for(int j=1;j<=M;j++)putchar(mapp[i][j]);
-        if(i==1)cout<<"| ===== CODE ===="<<endl;
+        if(i==1)printf("| ===== CODE ====\n");
         else{
             if(i<=lines+1){
-                if(i==instrnow+1)cout<<"| > "<<i-1<<' '<<users[i-1]<<endl;
-                else cout<<"|   "<<i-1<<' '<<users[i-1]<<endl;
+                if(i==instrnow+1)printf("| > %d %s\n",i-1,users[i-1].c_str());
+                else printf("|   %d %s\n",i-1,users[i-1].c_str());
             }
-            else cout<<'|'<<endl;
+            else{putchar('|');putchar('\n');}
         }
     }
     for(int i=N+1;i<=lines+1;i++){
         for(int j=1;j<=M;j++)putchar(' ');
-        if(i==instrnow+1)cout<<"| > "<<i-1<<' '<<users[i-1]<<endl;
-        else cout<<"|   "<<i-1<<' '<<users[i-1]<<endl;
+        if(i==instrnow+1)printf("| > %d %s\n",i-1,users[i-1].c_str());
+        else printf("|   %d %s\n",i-1,users[i-1].c_str());
     }
     return ;
 }

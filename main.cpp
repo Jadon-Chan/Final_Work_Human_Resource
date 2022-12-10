@@ -20,7 +20,8 @@ string task[]={
     "Pass_Situation.txt",
     "mission1.txt",
     "mission2.txt",
-    "mission3.txt"};
+    "mission3.txt",
+    "mission4.txt"};
 
 int main(void)
 {
