@@ -1,0 +1,5 @@
+8 3 9 5 1 -2 -2 9 -9
+8 -6 6 4 -4 0 0 18 -18
+3
+8 inbox outbox copyfrom copyto add sub jump jumpifzero
+For every two things in the input sequence, subtract the first from the second and put the result in the output sequence, then subtract the second from the first and put the result in the output sequence, and repeat

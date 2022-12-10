@@ -1,0 +1,5 @@
+8 6 2 7 7 -9 3 -3 -3
+2 7 -3
+3
+8 inbox outbox copyfrom copyto add sub jump jumpifzero
+Take two numbers from the input sequence. If they are equal, output one of them. Otherwise discard them. This process is repeated until the input conveyor is empty
